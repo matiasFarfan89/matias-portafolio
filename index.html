@@ -43,34 +43,27 @@
 
   <!-- ========== HERO ========== -->
   <section id="hero">
-    <div class="hero-bg-grid"></div>
+    <img src="./assests/profile2.jpg" alt="Matias Farfan" class="hero-photo" />
+    <div class="hero-scrim"></div>
     <div class="hero-glow"></div>
     <div class="container hero-inner">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-7 hero-text">
-          <p class="hero-eyebrow fade-up" style="--d:0.1s">Welcome</p>
-          <h1 class="hero-name fade-up" style="--d:0.25s">Matias Farfan.</h1>
-          <h2 class="hero-sub fade-up" style="--d:0.4s">I create user-centered web solutions.</h2>
-          <p class="hero-desc fade-up" style="--d:0.55s">
-            A dedicated web developer specializing in 
-            building robust and reliable digital experiences. 
-            I prioritize clean code, accessibility, and leveraging AI to improve efficiency and innovation 
-            whether it's automating tasks, generating content suggestions, or enhancing user interactions. 
-            I'm currently exploring new projects and collaborations.
-          </p>
-          <div class="hero-cta fade-up" style="--d:0.7s">
-            <a href="#projects" class="btn-primary-accent">Browse the menu <i class="bi bi-arrow-down"></i></a>
-            <a href="#contact" class="btn-ghost">Let's talk <i class="bi bi-arrow-right"></i></a>
-          </div>
-          <!-- Scroll indicator -->
-          <div class="scroll-line fade-up" style="--d:1s"><span></span></div>
+      <div class="hero-text">
+        <p class="hero-eyebrow fade-up" style="--d:0.1s">Welcome</p>
+        <h1 class="hero-name fade-up" style="--d:0.25s">Matias Farfan.</h1>
+        <h2 class="hero-sub fade-up" style="--d:0.4s">I create user-centered web solutions.</h2>
+        <p class="hero-desc fade-up" style="--d:0.55s">
+          A dedicated web developer specializing in
+          building robust and reliable digital experiences.
+          I prioritize clean code, accessibility, and leveraging AI to improve efficiency and innovation
+          whether it's automating tasks, generating content suggestions, or enhancing user interactions.
+          I'm currently exploring new projects and collaborations.
+        </p>
+        <div class="hero-cta fade-up" style="--d:0.7s">
+          <a href="#projects" class="btn-primary-accent">Browse my Work<i class="bi bi-arrow-down"></i></a>
+          <a href="#contact" class="btn-ghost">Let's talk <i class="bi bi-arrow-right"></i></a>
         </div>
-        <div class="col-lg-5 hero-portrait-col fade-up" style="--d:0.5s">
-          <div class="hero-portrait">
-            <img src="./assests/profile2.jpg" alt="Matias Farfan" class="hero-photo" />
-            <div class="hero-portrait-ring"></div>
-          </div>
-        </div>
+        <!-- Scroll indicator -->
+        <div class="scroll-line fade-up" style="--d:1s"><span></span></div>
       </div>
     </div>
   </section>
@@ -81,89 +74,110 @@
       <h2 class="section-title reveal">Projects <span class="title-line"></span></h2>
       <p class="section-sub reveal">A selection of things I've crafted — each one brewed with a little something new.</p>
 
-      <!-- Project 1 — Featured (large) -->
-      <div class="project-featured reveal">
-        <div class="row g-0 align-items-center">
-          <div class="col-lg-7">
-            <div class="project-img-wrap">
-              <div class="project-img-placeholder">
-                <i class="bi bi-window-sidebar"></i>
-                <span>Project Screenshot</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="project-info">
-              <p class="project-label">Featured Project</p>
-              <h3>Project One</h3>
-              <div class="project-desc">
-                <p>
-                  A fully responsive web application demonstrating modern
-                  HTML &amp; CSS techniques, semantic markup, and interactive
-                  JavaScript components. Clean architecture, accessible markup.
-                </p>
-              </div>
-              <div class="tech-pills">
-                <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
-              </div>
-              <div class="project-links">
-                <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                <a href="#" aria-label="Live Demo"><i class="bi bi-box-arrow-up-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Photo-style carousel -->
+      <div class="project-carousel reveal">
+        <div id="projectCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover">
 
-      <!-- Projects grid (smaller cards) -->
-      <div class="row g-4 mt-2">
-        <div class="col-md-6 col-lg-4 reveal">
-          <div class="project-card">
-            <div class="card-top">
-              <i class="bi bi-folder2 card-folder"></i>
-              <div class="card-links">
-                <a href="#"><i class="bi bi-github"></i></a>
-                <a href="#"><i class="bi bi-box-arrow-up-right"></i></a>
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Project One"></button>
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1" aria-label="Project Two"></button>
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2" aria-label="Project Three"></button>
+            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="3" aria-label="Project Four"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="project-slide">
+                <!-- Swap the placeholder div for: <img src="..." class="project-slide-img" alt="..."> -->
+                <div class="project-slide-media media-1"><i class="bi bi-window-sidebar"></i></div>
+                <div class="project-slide-caption">
+                  <p class="project-label">Featured Project</p>
+                  <h3>Project One</h3>
+                  <p class="project-slide-desc">
+                    A fully responsive web application demonstrating modern HTML &amp; CSS
+                    techniques, semantic markup, and interactive JavaScript components.
+                  </p>
+                  <div class="tech-pills"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+                  <div class="project-links">
+                    <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                    <a href="#" aria-label="Live Demo"><i class="bi bi-box-arrow-up-right"></i></a>
+                  </div>
+                </div>
               </div>
             </div>
-            <h4>Project Two</h4>
-            <p>A utility tool built to automate repetitive tasks. Focused on usability and clear user feedback.</p>
-            <div class="card-pills">
-              <span>HTML</span><span>CSS</span><span>JS</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 reveal">
-          <div class="project-card">
-            <div class="card-top">
-              <i class="bi bi-folder2 card-folder"></i>
-              <div class="card-links">
-                <a href="#"><i class="bi bi-github"></i></a>
-                <a href="#"><i class="bi bi-box-arrow-up-right"></i></a>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="project-slide">
+                <div class="project-slide-media media-2"><i class="bi bi-gear-wide-connected"></i></div>
+                <div class="project-slide-caption">
+                  <p class="project-label">Utility Tool</p>
+                  <h3>Project Two</h3>
+                  <p class="project-slide-desc">
+                    A utility tool built to automate repetitive tasks, focused on usability
+                    and clear, friendly user feedback at every step.
+                  </p>
+                  <div class="tech-pills"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                  <div class="project-links">
+                    <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                    <a href="#" aria-label="Live Demo"><i class="bi bi-box-arrow-up-right"></i></a>
+                  </div>
+                </div>
               </div>
             </div>
-            <h4>Project Three</h4>
-            <p>A responsive landing page with smooth scroll animations and an accessible contact form.</p>
-            <div class="card-pills">
-              <span>Bootstrap</span><span>JS</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 reveal">
-          <div class="project-card">
-            <div class="card-top">
-              <i class="bi bi-folder2 card-folder"></i>
-              <div class="card-links">
-                <a href="#"><i class="bi bi-github"></i></a>
-                <a href="#"><i class="bi bi-box-arrow-up-right"></i></a>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+              <div class="project-slide">
+                <div class="project-slide-media media-3"><i class="bi bi-layout-text-window-reverse"></i></div>
+                <div class="project-slide-caption">
+                  <p class="project-label">Landing Page</p>
+                  <h3>Project Three</h3>
+                  <p class="project-slide-desc">
+                    A responsive landing page with smooth scroll animations and an
+                    accessible, well-considered contact form.
+                  </p>
+                  <div class="tech-pills"><span>Bootstrap</span><span>JS</span></div>
+                  <div class="project-links">
+                    <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                    <a href="#" aria-label="Live Demo"><i class="bi bi-box-arrow-up-right"></i></a>
+                  </div>
+                </div>
               </div>
             </div>
-            <h4>Project Four</h4>
-            <p>A data-driven dashboard exploring charting libraries and dynamic DOM manipulation.</p>
-            <div class="card-pills">
-              <span>HTML</span><span>CSS</span><span>Chart.js</span>
+
+            <!-- Slide 4 -->
+            <div class="carousel-item">
+              <div class="project-slide">
+                <div class="project-slide-media media-4"><i class="bi bi-bar-chart-line"></i></div>
+                <div class="project-slide-caption">
+                  <p class="project-label">Dashboard</p>
+                  <h3>Project Four</h3>
+                  <p class="project-slide-desc">
+                    A data-driven dashboard exploring charting libraries and dynamic
+                    DOM manipulation, with clean, readable visualisations.
+                  </p>
+                  <div class="tech-pills"><span>HTML</span><span>CSS</span><span>Chart.js</span></div>
+                  <div class="project-links">
+                    <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                    <a href="#" aria-label="Live Demo"><i class="bi bi-box-arrow-up-right"></i></a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+            <span class="carousel-ctrl"><i class="bi bi-chevron-left"></i></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+            <span class="carousel-ctrl"><i class="bi bi-chevron-right"></i></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </div>
