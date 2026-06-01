@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Matias Farfan — Web Developer</title>
 
-  <!-- Bootstrap 5 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <!-- Google Fonts: Fraunces (artisanal serif) + DM Sans + JetBrains Mono -->
@@ -14,12 +12,42 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        container: {
+          center: true,
+          padding: '1rem',
+          screens: { sm: '540px', md: '720px', lg: '960px', xl: '1140px', '2xl': '1320px' },
+        },
+        extend: {
+          colors: {
+            bg: '#313647', 'bg-deep': '#262A38', bg2: '#2B303D',
+            surface: '#3A4455', surface2: '#435663',
+            accent: '#2ac9b7', text: '#DDE0D2', 'text-dim': '#97A1A8',
+            white: '#FFF8D4', cream: '#FFF8D4', espresso: '#313647',
+            black: '#1B1E27', coffee: '#435663',
+          },
+          fontFamily: {
+            serif: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          borderRadius: { DEFAULT: '12px', lg: '22px' },
+        },
+      },
+      corePlugins: { preflight: false },
+    }
+  </script>
+
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
 
   <!-- ========== NAVBAR ========== -->
-  <nav id="navbar" class="navbar navbar-expand-md fixed-top">
+  <nav id="navbar" class="navbar navbar-expand-md">
     <div class="container">
       <a class="navbar-brand mono" href="#hero">MF<span class="accent">.</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
@@ -27,13 +55,13 @@
         <span class="toggler-icon"></span>
         <span class="toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
-        <ul class="navbar-nav gap-1">
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav flex gap-1 md:justify-end">
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item ms-md-2">
+          <li class="nav-item md:ml-2">
             <a class="btn-outline-accent" href="resume.pdf" target="_blank">Resume <i class="bi bi-arrow-up-right"></i></a>
           </li>
         </ul>
@@ -88,7 +116,6 @@
             <!-- Slide 1 -->
             <div class="carousel-item active">
               <div class="project-slide">
-                <!-- Swap the placeholder div for: <img src="..." class="project-slide-img" alt="..."> -->
                 <div class="project-slide-media media-1"><i class="bi bi-window-sidebar"></i></div>
                 <div class="project-slide-caption">
                   <p class="project-label">Featured Project</p>
@@ -185,8 +212,8 @@
   <section id="about" class="section-pad">
     <div class="container">
       <h2 class="section-title reveal">A Little About Me <span class="title-line"></span></h2>
-      <div class="row align-items-center g-5">
-        <div class="col-lg-7 reveal">
+      <div class="flex flex-wrap items-center gap-10">
+        <div class="w-full lg:w-7/12 reveal">
           <div class="about-text">
             <p>
               I'm a recent graduate who fell for the web the way some people fall for
@@ -203,11 +230,11 @@
             </p>
           </div>
         </div>
-        <div class="col-lg-5 d-flex justify-content-center reveal">
-  <div class="about-img-wrap">
-    <img src="./assests/profile4.jpg" alt="Matias Farfan" class="about-img" />
-  </div>
-</div>
+        <div class="w-full lg:w-5/12 flex justify-center reveal">
+          <div class="about-img-wrap">
+            <img src="./assests/profile4.jpg" alt="Matias Farfan" class="about-img" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -216,9 +243,9 @@
   <section id="skills" class="section-pad">
     <div class="container">
       <h2 class="section-title reveal">Skills &amp; Tools <span class="title-line"></span></h2>
-      <div class="row g-4">
+      <div class="grid md:grid-cols-3 gap-4">
         <!-- Frontend -->
-        <div class="col-md-4 reveal">
+        <div class="reveal">
           <div class="skill-card">
             <div class="skill-card-icon"><i class="bi bi-code-slash"></i></div>
             <h4>Frontend</h4>
@@ -232,7 +259,7 @@
           </div>
         </div>
         <!-- Backend -->
-        <div class="col-md-4 reveal">
+        <div class="reveal">
           <div class="skill-card skill-card--mid">
             <div class="skill-card-icon"><i class="bi bi-server"></i></div>
             <h4>Backend</h4>
@@ -247,7 +274,7 @@
           </div>
         </div>
         <!-- Tools -->
-        <div class="col-md-4 reveal">
+        <div class="reveal">
           <div class="skill-card">
             <div class="skill-card-icon"><i class="bi bi-tools"></i></div>
             <h4>Tools</h4>
@@ -268,8 +295,8 @@
   <section id="contact" class="section-pad section-alt">
     <div class="container">
       <h2 class="section-title reveal">Get In Touch <span class="title-line"></span></h2>
-      <div class="row justify-content-center">
-        <div class="col-lg-7 text-center reveal">
+      <div class="flex justify-center">
+        <div class="w-full lg:w-7/12 text-center reveal">
           <p class="contact-lead">
             Interested in working together? Get in touch.
           </p>
@@ -280,24 +307,24 @@
       </div>
 
       <!-- Contact Form -->
-      <div class="row justify-content-center mt-5">
-        <div class="col-lg-8 reveal">
+      <div class="flex justify-center mt-12">
+        <div class="w-full lg:w-8/12 reveal">
           <div class="contact-card">
             <form id="contactForm" novalidate>
-              <div class="row g-3">
-                <div class="col-sm-6">
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div>
                   <label for="name" class="form-label">Name</label>
                   <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Joe Davis" required />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label for="email" class="form-label">Email</label>
                   <input type="email" class="form-control custom-input" id="email" name="email" placeholder="hello@example.com" required />
                 </div>
-                <div class="col-12">
+                <div class="sm:col-span-2">
                   <label for="message" class="form-label">Message</label>
                   <textarea class="form-control custom-input" id="message" name="message" rows="5" placeholder="Tell me about your project…" required></textarea>
                 </div>
-                <div class="col-12">
+                <div class="sm:col-span-2">
                   <button type="submit" class="btn-primary-accent w-100" id="submitBtn">
                     Send Message <i class="bi bi-arrow-right"></i>
                   </button>
@@ -331,7 +358,7 @@
   <!-- Back to top -->
   <button id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>
 
-  <!-- Bootstrap 5 JS -->
+  <!-- Bootstrap 5 JS (carousel + collapse depend on this) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="scripts.js"></script>
 </body>
