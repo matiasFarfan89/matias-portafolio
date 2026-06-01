@@ -117,7 +117,7 @@
       submitBtn.innerHTML = '<span class="spinner"></span> Sending…';
 
       setTimeout(() => {
-        showMsg('✓ Message sent! Ill get back to you soon.', 'success');
+        showMsg("✓ Message sent! I'll get back to you soon.", 'success');
         form.reset();
         form.classList.remove('was-validated');
         submitBtn.disabled = false;

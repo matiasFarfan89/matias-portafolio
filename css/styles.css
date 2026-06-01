@@ -114,7 +114,7 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.5px;
 }
 
-.nav-link {
+#navbar .nav-link {
   color: var(--text-dim) !important;
   font-family: var(--sans);
   font-size: 0.9rem;
@@ -125,15 +125,15 @@ img { max-width: 100%; display: block; }
   counter-increment: nav-counter;
   position: relative;
 }
-.nav-link::before {
+#navbar .nav-link::before {
   content: "0" counter(nav-counter) " — ";
   color: var(--accent);
   font-family: var(--mono);
   font-size: 0.7rem;
   opacity: 0.7;
 }
-.nav-link:hover,
-.nav-link.active { color: var(--white) !important; }
+#navbar .nav-link:hover,
+#navbar .nav-link.active { color: var(--white) !important; }
 
 .navbar-nav { counter-reset: nav-counter; }
 
@@ -182,13 +182,16 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 767px) {
   .navbar-collapse {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
     background: rgba(18,11,5,0.97);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    margin-top: 0.5rem;
+    border-radius: 0 0 var(--radius) var(--radius);
     padding: 1rem 1.25rem;
   }
-  .nav-link { padding: 0.6rem 0 !important; }
+  #navbar .nav-link { padding: 0.6rem 0 !important; }
   .btn-outline-accent { margin-top: 0.5rem; display: inline-block; text-align: center; }
 }
 
@@ -883,14 +886,16 @@ textarea.custom-input { resize: vertical; min-height: 140px; }
    BOOTSTRAP COLLAPSE — required for mobile nav JS
    ============================================= */
 .collapse:not(.show) { display: none; }
+.collapse.show { visibility: visible; }
 .collapsing {
   height: 0;
   overflow: hidden;
   transition: height .35s ease;
 }
 @media (min-width: 768px) {
-  .navbar-expand-md .collapse { display: flex !important; flex-basis: auto; }
-  .navbar-expand-md .navbar-collapse { display: flex !important; flex-basis: auto; }
+  .navbar-expand-md .navbar-toggler { display: none; }
+  .navbar-expand-md .collapse { display: flex !important; flex-basis: auto; visibility: visible; }
+  .navbar-expand-md .navbar-collapse { display: flex !important; flex-basis: auto; visibility: visible; }
 }
 
 /* =============================================
