@@ -734,6 +734,7 @@ img { max-width: 100%; display: block; }
 }
 
 .form-label {
+  display: block;
   color: var(--text-dim);
   font-family: var(--mono);
   font-size: 0.74rem;
@@ -743,6 +744,8 @@ img { max-width: 100%; display: block; }
 }
 
 .custom-input {
+  display: block;
+  width: 100%;
   background: var(--bg-deep);
   border: 1px solid var(--border);
   color: var(--text);
