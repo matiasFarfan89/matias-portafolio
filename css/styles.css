@@ -271,6 +271,8 @@ img { max-width: 100%; display: block; }
 .hero-text {
   max-width: 680px;
   text-shadow: 0 2px 24px rgba(0,0,0,0.45);
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-eyebrow {
@@ -318,7 +320,7 @@ img { max-width: 100%; display: block; }
   max-width: 480px;
   color: var(--text);
   font-size: clamp(0.98rem, 2.8vw, 1.2rem);
-  margin-bottom: 2.5rem;
+  margin: 0 auto 2.5rem;
 }
 
 .hero-cta {
@@ -326,6 +328,7 @@ img { max-width: 100%; display: block; }
   gap: 1.25rem;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 /* Buttons */
@@ -857,7 +860,7 @@ textarea.custom-input { resize: vertical; min-height: 140px; }
 }
 
 @media (max-width: 575px) {
-  .hero-cta { flex-direction: column; align-items: flex-start; }
+  .hero-cta { flex-direction: column; align-items: center; }
   .contact-card { padding: 1.5rem; }
   .section-title { white-space: normal; }
 }
