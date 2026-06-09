@@ -122,7 +122,7 @@
         form.classList.remove('was-validated');
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Send Message <i class="bi bi-arrow-right"></i>';
-      }, 1600);
+      }, 2500);
     });
   }
 
