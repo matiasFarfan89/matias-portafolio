@@ -3,343 +3,420 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matias Farfan — Web Developer</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="description" content="Matias Farfan — junior full-stack developer in Christchurch, NZ. Next.js, TypeScript, n8n automation, Docker homelab." />
+  <title>Matias Farfan — Full-Stack Developer</title>
 
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <!-- Google Fonts: Fraunces (artisanal serif) + DM Sans + JetBrains Mono -->
+  <!-- Bootstrap Icons (icon font only — no Bootstrap CSS/JS) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" integrity="sha384-XGjxtQfXaH2tnPFa9x+ruJTuLE3Aa6LhHSWRr1XeTyhezb4abCG4ccI5AkVDxqC+" crossorigin="anonymous" />
+
+  <!-- Google Fonts: Space Grotesk (display) + Inter (body) + JetBrains Mono (code) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS (CDN) — config lives in tailwind.config.js so the CSP needs no inline scripts -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        container: {
-          center: true,
-          padding: '1rem',
-          screens: { sm: '540px', md: '720px', lg: '960px', xl: '1140px', '2xl': '1320px' },
-        },
-        extend: {
-          colors: {
-            bg: '#313647', 'bg-deep': '#262A38', bg2: '#2B303D',
-            surface: '#3A4455', surface2: '#435663',
-            accent: '#2ac9b7', text: '#DDE0D2', 'text-dim': '#97A1A8',
-            white: '#FFF8D4', cream: '#FFF8D4', espresso: '#313647',
-            black: '#1B1E27', coffee: '#435663',
-          },
-          fontFamily: {
-            serif: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
-            sans: ['DM Sans', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          borderRadius: { DEFAULT: '12px', lg: '22px' },
-        },
-      },
-      corePlugins: { preflight: false },
-    }
-  </script>
+  <script src="tailwind.config.js"></script>
 
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
 
   <!-- ========== NAVBAR ========== -->
-  <nav id="navbar" class="navbar navbar-expand-md">
-    <div class="container">
-      <a class="navbar-brand mono" href="#hero">MF<span class="accent">.</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+  <nav id="navbar" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a class="nav-brand mono" href="#hero" aria-label="Back to top — Matias Farfan">MF<span class="accent">.</span></a>
+      <button id="navToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
         <span class="toggler-icon"></span>
         <span class="toggler-icon"></span>
         <span class="toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav flex gap-1 md:justify-end">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item md:ml-2">
-            <a class="btn-outline-accent" href="resume.pdf" target="_blank">Resume <i class="bi bi-arrow-up-right"></i></a>
-          </li>
-        </ul>
-      </div>
+      <ul id="navMenu" class="nav-menu">
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="md:ml-2">
+          <a class="btn-outline-accent" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+        </li>
+      </ul>
     </div>
   </nav>
 
-  <!-- ========== HERO ========== -->
-  <section id="hero">
-    <img src="./assests/3d-cubes.jpg" alt="Matias Farfan" class="hero-photo" />
-    <div class="hero-scrim"></div>
-    <div class="hero-glow"></div>
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <p class="hero-eyebrow fade-up" style="--d:0.1s">Welcome</p>
-        <h1 class="hero-name fade-up" style="--d:0.25s">Matias Farfan.</h1>
-        <h2 class="hero-sub fade-up" style="--d:0.4s">Web Developer and Designer</h2>
-        <p class="hero-desc fade-up" style="--d:0.55s">
-          I focus on creating effective and engaging web experiences. 
-          I'm passionate about leveraging modern technologies to build robust 
-          and user-friendly applications. I'm always looking for new challenges 
-          and opportunities to collaborate.
-        </p>
-        <div class="hero-cta fade-up" style="--d:0.7s">
-          <a href="#projects" class="btn-primary-accent">Browse my Work<i class="bi bi-arrow-down"></i></a>
-          <a href="#contact" class="btn-ghost">Let's talk <i class="bi bi-arrow-right"></i></a>
-        </div>
-        <!-- Scroll indicator -->
-        <div class="scroll-line fade-up" style="--d:1s"><span></span></div>
-      </div>
-    </div>
-  </section>
+  <main>
 
-  <!-- ========== PROJECTS ========== -->
-  <section id="projects" class="section-pad section-alt">
-    <div class="container">
-      <h2 class="section-title reveal">Projects <span class="title-line"></span></h2>
-      <p class="section-sub reveal">A selection of things I've crafted — each one brewed with a little something new.</p>
+    <!-- ========== HERO ========== -->
+    <section id="hero">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-glow hero-glow--violet" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow--mint" aria-hidden="true"></div>
 
-      <!-- Photo-style carousel -->
-      <div class="project-carousel reveal">
-        <div id="projectCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover">
-
-          <!-- Indicators -->
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Project One"></button>
-            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1" aria-label="Project Two"></button>
-            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2" aria-label="Project Three"></button>
-            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="3" aria-label="Project Four"></button>
-          </div>
-
-          <div class="carousel-inner">
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-              <div class="project-slide">
-                <img src="./assests/snazzy-paws.png" alt="Snazzy Paws" class="project-slide-img" />
-                <div class="project-slide-caption">
-                  <p class="project-label">Featured Project</p>
-                  <h3>Snazzy Paws</h3>
-                  <p class="project-slide-desc">
-                    A cheerful pet-care website built with clean HTML, CSS and Tailwind.
-                  </p>
-                  <div class="tech-pills"><span>HTML5</span><span>CSS3</span><span>JS</span></div>
-                  <div class="project-links">
-                    <a href="https://github.com/matiasfarfan89/snazzy-paws" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                    <a href="https://matiasfarfan89.github.io/snazzy-paws/" target="_blank" rel="noopener" aria-label="Live Demo"><i class="bi bi-box-arrow-up-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-              <div class="project-slide">
-                <div class="project-slide-media media-2"><i class="bi bi-gear-wide-connected"></i></div>
-                <div class="project-slide-caption">
-                  <p class="project-label">Utility Tool</p>
-                  <h3>Project Two</h3>
-                  <p class="project-slide-desc">
-                    A utility tool built to automate repetitive tasks, focused on usability
-                    and clear, friendly user feedback at every step.
-                  </p>
-                  <div class="tech-pills"><span>HTML</span><span>CSS</span><span>JS</span></div>
-                  <div class="project-links">
-                    <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                    <a href="#" aria-label="Live Demo"><i class="bi bi-box-arrow-up-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item">
-              <div class="project-slide">
-                <div class="project-slide-media media-3"><i class="bi bi-layout-text-window-reverse"></i></div>
-                <div class="project-slide-caption">
-                  <p class="project-label">Landing Page</p>
-                  <h3>Project Three</h3>
-                  <p class="project-slide-desc">
-                    A responsive landing page with smooth scroll animations and an
-                    accessible, well-considered contact form.
-                  </p>
-                  <div class="tech-pills"><span>Bootstrap</span><span>JS</span></div>
-                  <div class="project-links">
-                    <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                    <a href="#" aria-label="Live Demo"><i class="bi bi-box-arrow-up-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 4 -->
-            <div class="carousel-item">
-              <div class="project-slide">
-                <div class="project-slide-media media-4"><i class="bi bi-bar-chart-line"></i></div>
-                <div class="project-slide-caption">
-                  <p class="project-label">Dashboard</p>
-                  <h3>Project Four</h3>
-                  <p class="project-slide-desc">
-                    A data-driven dashboard exploring charting libraries and dynamic
-                    DOM manipulation, with clean, readable visualisations.
-                  </p>
-                  <div class="tech-pills"><span>HTML</span><span>CSS</span><span>Chart.js</span></div>
-                  <div class="project-links">
-                    <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                    <a href="#" aria-label="Live Demo"><i class="bi bi-box-arrow-up-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Controls -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
-            <span class="carousel-ctrl"><i class="bi bi-chevron-left"></i></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
-            <span class="carousel-ctrl"><i class="bi bi-chevron-right"></i></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== ABOUT ========== -->
-  <section id="about" class="section-pad">
-    <div class="container">
-      <h2 class="section-title reveal">A Little About Me <span class="title-line"></span></h2>
-      <div class="flex flex-col lg:flex-row items-center gap-10">
-        <div class="w-full lg:w-7/12 reveal">
-          <div class="about-text">
-            <p>
-              Junior full-stack developer building things with <strong>Next.js and TypeScript</strong>. 
-              I got here via tourism and hospitality, but somewhere along the way I fell into the rabbit hole of 
-              <strong>self-hosting, Docker, and automation</strong>. Now I spend a lot of time on Linux, 
-              spinning up services, and writing workflows that save people from repetitive work. 
-              I like the whole stack—frontend to backend to the infrastructure keeping it all running.
+      <div class="container hero-inner">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <p class="hero-eyebrow fade-up" style="--d:0.1s">Christchurch, New Zealand</p>
+            <h1 class="hero-name fade-up" style="--d:0.25s">
+              <span class="hero-name-line">Matias</span>
+              <span class="hero-name-line hero-name-line--grad">Farfan</span>
+            </h1>
+            <h2 class="hero-sub fade-up" style="--d:0.4s">
+              <span class="visually-hidden">Full-Stack Developer · Automation Builder · Linux Enthusiast · Next.js Developer</span>
+              <span class="typewriter" aria-hidden="true"><span id="typeText"></span><span class="type-cursor"></span></span>
+            </h2>
+            <p class="hero-desc fade-up" style="--d:0.55s">
+              I focus on creating effective and engaging web experiences.
+              I'm passionate about leveraging modern technologies to build robust
+              and user-friendly applications. I'm always looking for new challenges
+              and opportunities to collaborate.
             </p>
+            <div class="hero-cta fade-up" style="--d:0.7s">
+              <a href="#projects" class="btn-primary-accent">Browse my Work <i class="bi bi-arrow-down" aria-hidden="true"></i></a>
+              <a href="#contact" class="btn-ghost">Let's talk <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="scroll-line fade-up" style="--d:1s" aria-hidden="true"><span></span></div>
           </div>
-        </div>
-        <div class="w-full lg:w-5/12 flex justify-center reveal">
-          <div class="about-img-wrap">
-            <img src="./assests/profile2.jpg" alt="Matias Farfan" class="about-img" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ========== SKILLS ========== -->
-  <section id="skills" class="section-pad">
-    <div class="container">
-      <h2 class="section-title reveal">Skills &amp; Tools <span class="title-line"></span></h2>
-      <div class="grid md:grid-cols-3 gap-4">
-        <!-- Frontend -->
-        <div class="reveal">
-          <div class="skill-card">
-            <div class="skill-card-icon"><i class="bi bi-code-slash"></i></div>
-            <h4>Frontend</h4>
-            <ul>
-              <li>HTML5 / CSS3</li>
-              <li>JavaScript</li>
-              <li>Bootstrap 5</li>
-              <li>React</li>
-              <li>Tailwind</li>
-            </ul>
-          </div>
-        </div>
-        <!-- Backend -->
-        <div class="reveal">
-          <div class="skill-card skill-card--mid">
-            <div class="skill-card-icon"><i class="bi bi-server"></i></div>
-            <h4>Backend</h4>
-            <ul>
-              <li>Node.js </li>
-              <li>REST APIs</li>
-              <li>SQL</li>
-              <li>JSON / Data Handling</li>
-              <li>HTTP Fundamentals</li>
-            </ul>
-          </div>
-        </div>
-        <!-- Tools -->
-        <div class="reveal">
-          <div class="skill-card">
-            <div class="skill-card-icon"><i class="bi bi-tools"></i></div>
-            <h4>Tools</h4>
-            <ul>
-              <li>Git &amp; GitHub</li>
-              <li>VS Code</li>
-              <li>Claude Code</li>
-              <li>Ollama</li>
-              <li>Figma</li>
-              <li>N8N Automations</li>
-              <li>Docker</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== CONTACT ========== -->
-  <section id="contact" class="section-pad section-alt">
-    <div class="container">
-      <h2 class="section-title reveal">Get In Touch <span class="title-line"></span></h2>
-      <div class="flex justify-center">
-        <div class="w-full lg:w-7/12 text-center reveal">
-          <p class="contact-lead">
-            Interested in working together? Get in touch.
-          </p>
-          <a href="mailto:example@gmail.com" class="btn-primary-accent btn-lg-accent">
-            Say Hello <i class="bi bi-send"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Contact Form -->
-      <div class="flex justify-center mt-12">
-        <div class="w-full lg:w-8/12 reveal">
-          <div class="contact-card">
-            <form id="contactForm" novalidate>
-              <div class="grid sm:grid-cols-2 gap-3">
-                <div>
-                  <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Your Name" required />
-                </div>
-                <div>
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control custom-input" id="email" name="email" placeholder="hello@example.com" required />
-                </div>
-                <div class="sm:col-span-2">
-                  <label for="message" class="form-label">Message</label>
-                  <textarea class="form-control custom-input" id="message" name="message" rows="5" placeholder="Tell me about your project…" required></textarea>
-                </div>
-                <div class="sm:col-span-2">
-                  <button type="submit" class="btn-primary-accent w-100" id="submitBtn">
-                    Send Message <i class="bi bi-arrow-right"></i>
-                  </button>
-                  <p id="formMsg" class="form-feedback mt-2" aria-live="polite"></p>
-                </div>
+          <!-- Static mock terminal — decorative, lg screens only -->
+          <div class="hero-terminal fade-up" style="--d:0.85s" aria-hidden="true">
+            <div class="terminal">
+              <div class="terminal-bar">
+                <span class="t-dot t-dot--red"></span>
+                <span class="t-dot t-dot--yellow"></span>
+                <span class="t-dot t-dot--green"></span>
+                <span class="terminal-title">matias@titan: ~</span>
               </div>
-            </form>
+              <pre class="terminal-body"><code><span class="t-prompt">matias@titan</span><span class="t-sep">:~$</span> docker ps -q | wc -l
+<span class="t-out">21</span>
+<span class="t-prompt">matias@titan</span><span class="t-sep">:~$</span> uptime -p
+<span class="t-out">up 47 days, 6 hours</span>
+<span class="t-prompt">matias@titan</span><span class="t-sep">:~$</span> ls ~/automations
+<span class="t-mint">chef-assistant/</span>  <span class="t-mint">finance-rag/</span>
+<span class="t-mint">binance-flow/</span>
+<span class="t-prompt">matias@titan</span><span class="t-sep">:~$</span> echo $STATUS
+<span class="t-out">open to work — let's build something</span>
+<span class="t-prompt">matias@titan</span><span class="t-sep">:~$</span> <span class="t-caret"></span></code></pre>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects" class="section-pad section-alt">
+      <div class="orb orb--violet" data-speed="-0.06" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">01 — Work</p>
+          <h2 class="section-title">Selected Projects</h2>
+          <p class="section-sub">Web apps, automation workflows and the homelab that runs them — each one built to learn something new.</p>
+        </header>
+
+        <!-- Filter tabs -->
+        <div class="filter-row reveal" aria-label="Filter projects by type">
+          <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-filter="webapp" aria-pressed="false">Web App</button>
+          <button type="button" class="filter-btn" data-filter="automation" aria-pressed="false">Automation</button>
+          <button type="button" class="filter-btn" data-filter="homelab" aria-pressed="false">Homelab</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- 1. Snazzy Paws -->
+          <article class="project-card reveal" data-type="webapp">
+            <div class="project-media">
+              <img src="./assets/snazzy-paws.png" alt="Snazzy Paws website screenshot" class="project-img" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="type-badge type-badge--webapp">Web App</span>
+                <span class="project-year mono">2025</span>
+              </div>
+              <h3>Snazzy Paws</h3>
+              <p>A cheerful pet-care website with a playful brand, responsive layout and an accessible booking-style contact flow.</p>
+              <div class="tech-pills"><span>HTML5</span><span>CSS3</span><span>Tailwind</span><span>JS</span></div>
+              <div class="project-links">
+                <a href="https://github.com/matiasfarfan89/snazzy-paws" target="_blank" rel="noopener noreferrer" aria-label="Snazzy Paws source code on GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="https://matiasfarfan89.github.io/snazzy-paws/" target="_blank" rel="noopener noreferrer" aria-label="Snazzy Paws live site"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. n8n Chef Assistant -->
+          <article class="project-card reveal" data-type="automation">
+            <div class="project-media project-media--ph media-chef">
+              <i class="bi bi-robot" aria-hidden="true"></i>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="type-badge type-badge--automation">Automation</span>
+                <span class="project-year mono">2025</span>
+              </div>
+              <h3>n8n Chef Assistant</h3>
+              <p>A Telegram bot that turns "what's in my fridge" into recipes — an n8n workflow calling a local LLM through Ollama, exposed via Cloudflare Tunnel.</p>
+              <div class="tech-pills"><span>n8n</span><span>Ollama</span><span>Telegram API</span><span>Cloudflare Tunnel</span></div>
+              <div class="project-links">
+                <a href="https://github.com/matiasFarfan89" target="_blank" rel="noopener noreferrer" aria-label="n8n Chef Assistant on GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. titan Home Server -->
+          <article class="project-card reveal" data-type="homelab">
+            <div class="project-media project-media--ph media-titan">
+              <i class="bi bi-hdd-rack" aria-hidden="true"></i>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="type-badge type-badge--homelab">Homelab</span>
+                <span class="project-year mono">2024</span>
+              </div>
+              <h3>titan Home Server</h3>
+              <p>Self-hosted Ubuntu server running ~20 Docker containers in production — reverse proxy, monitoring, media, AI services — managed with Portainer.</p>
+              <div class="tech-pills"><span>Docker</span><span>Ubuntu</span><span>Portainer</span><span>Nginx</span></div>
+              <div class="project-links">
+                <a href="https://github.com/matiasFarfan89" target="_blank" rel="noopener noreferrer" aria-label="titan Home Server configs on GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Spanish Teacher Platform -->
+          <article class="project-card reveal" data-type="webapp">
+            <div class="project-media project-media--ph media-spanish">
+              <i class="bi bi-translate" aria-hidden="true"></i>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="type-badge type-badge--webapp">Web App</span>
+                <span class="project-year project-year--wip mono">In Progress</span>
+              </div>
+              <h3>Spanish Teacher Platform</h3>
+              <p>A booking and payments platform for a private Spanish teacher — auth and data on Supabase, Stripe checkout, built with the Next.js App Router.</p>
+              <div class="tech-pills"><span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Stripe</span></div>
+              <div class="project-links">
+                <a href="https://github.com/matiasFarfan89" target="_blank" rel="noopener noreferrer" aria-label="Spanish Teacher Platform on GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Personal Finance AI Agent -->
+          <article class="project-card reveal" data-type="automation">
+            <div class="project-media project-media--ph media-finance">
+              <i class="bi bi-wallet2" aria-hidden="true"></i>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="type-badge type-badge--automation">Automation</span>
+                <span class="project-year mono">2025</span>
+              </div>
+              <h3>Personal Finance AI Agent</h3>
+              <p>A private RAG pipeline over my own bank statements — documents embedded into Qdrant, queried through Open WebUI with a local Ollama model. No data leaves the server.</p>
+              <div class="tech-pills"><span>Open WebUI</span><span>Qdrant</span><span>Ollama</span><span>RAG</span></div>
+              <div class="project-links">
+                <a href="https://github.com/matiasFarfan89" target="_blank" rel="noopener noreferrer" aria-label="Personal Finance AI Agent on GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Binance Trading Workflow -->
+          <article class="project-card reveal" data-type="automation">
+            <div class="project-media project-media--ph media-binance">
+              <i class="bi bi-currency-bitcoin" aria-hidden="true"></i>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="type-badge type-badge--automation">Automation</span>
+                <span class="project-year mono">2026</span>
+              </div>
+              <h3>Binance Trading Workflow</h3>
+              <p>An n8n workflow watching Binance markets and proposing trades — every order waits for a human yes/no over WhatsApp before anything executes.</p>
+              <div class="tech-pills"><span>n8n</span><span>Binance API</span><span>WhatsApp</span></div>
+              <div class="project-links">
+                <a href="https://github.com/matiasFarfan89" target="_blank" rel="noopener noreferrer" aria-label="Binance Trading Workflow on GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about" class="section-pad">
+      <div class="orb orb--mint" data-speed="0.05" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">02 — About</p>
+          <h2 class="section-title">A Little About Me</h2>
+        </header>
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="w-full lg:w-3/5 reveal">
+            <div class="about-text">
+              <p>
+                Junior full-stack developer building things with <strong>Next.js and TypeScript</strong>.
+                I got here via tourism and hospitality, but somewhere along the way I fell into the rabbit hole of
+                <strong>self-hosting, Docker, and automation</strong>. Now I spend a lot of time on Linux,
+                spinning up services, and writing workflows that save people from repetitive work.
+                I like the whole stack—frontend to backend to the infrastructure keeping it all running.
+              </p>
+            </div>
+            <div class="stats-row">
+              <div class="stat">
+                <span class="stat-num mono">20+</span>
+                <span class="stat-label">Docker containers in prod</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num mono">3+</span>
+                <span class="stat-label">Automation workflows</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num mono">2</span>
+                <span class="stat-label">Years hands-on</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-2/5 flex justify-center reveal">
+            <div class="about-img-wrap">
+              <img src="./assets/profile2.jpg" alt="Matias Farfan" class="about-img" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section id="skills" class="section-pad section-alt">
+      <div class="orb orb--violet orb--small" data-speed="-0.04" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">03 — Stack</p>
+          <h2 class="section-title">Skills &amp; Tools</h2>
+        </header>
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+          <!-- Frontend -->
+          <div class="reveal">
+            <div class="skill-card">
+              <div class="skill-card-icon"><i class="bi bi-code-slash" aria-hidden="true"></i></div>
+              <h4>Frontend</h4>
+              <ul>
+                <li>HTML5 / CSS3</li>
+                <li>JavaScript ES2022+</li>
+                <li>React / Next.js</li>
+                <li>TypeScript</li>
+                <li>Tailwind CSS</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Backend -->
+          <div class="reveal">
+            <div class="skill-card skill-card--accent">
+              <div class="skill-card-icon"><i class="bi bi-server" aria-hidden="true"></i></div>
+              <h4>Backend</h4>
+              <ul>
+                <li>Node.js</li>
+                <li>REST APIs</li>
+                <li>Supabase (PostgreSQL)</li>
+                <li>Stripe</li>
+                <li>SQL</li>
+              </ul>
+            </div>
+          </div>
+          <!-- DevOps & Infra -->
+          <div class="reveal">
+            <div class="skill-card">
+              <div class="skill-card-icon"><i class="bi bi-hdd-network" aria-hidden="true"></i></div>
+              <h4>DevOps &amp; Infra</h4>
+              <ul>
+                <li>Docker / Portainer</li>
+                <li>Linux (Ubuntu)</li>
+                <li>Nginx / Cloudflare</li>
+                <li>Git / GitHub</li>
+                <li>Self-hosted services</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Automation & AI -->
+          <div class="reveal">
+            <div class="skill-card">
+              <div class="skill-card-icon"><i class="bi bi-robot" aria-hidden="true"></i></div>
+              <h4>Automation &amp; AI</h4>
+              <ul>
+                <li>n8n workflows</li>
+                <li>Ollama (local LLMs)</li>
+                <li>RAG pipelines</li>
+                <li>Open WebUI</li>
+                <li>Claude Code</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="section-pad section-deep">
+      <div class="orb orb--mint orb--small" data-speed="0.04" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">04 — Contact</p>
+          <h2 class="section-title">Get In Touch</h2>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <!-- Left: intro + CTA + socials -->
+          <div class="reveal">
+            <p class="contact-lead">
+              I'm currently looking for my first full-time developer role in Christchurch or remote.
+              If you've got a project, a role, or just want to talk Docker and automation — my inbox is open.
+            </p>
+            <a href="mailto:matiashapze@gmail.com" class="btn-primary-accent btn-lg-accent">
+              Say Hello <i class="bi bi-send" aria-hidden="true"></i>
+            </a>
+            <div class="contact-social">
+              <a href="https://github.com/matiasFarfan89" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="bi bi-github" aria-hidden="true"></i></a>
+              <a href="https://www.linkedin.com/in/matias-farfan-262a31255/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+            </div>
+          </div>
+
+          <!-- Right: form -->
+          <div class="reveal">
+            <div class="contact-card">
+              <form id="contactForm" novalidate>
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Your Name" maxlength="100" required />
+                  </div>
+                  <div>
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control custom-input" id="email" name="email" placeholder="hello@example.com" maxlength="200" required />
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control custom-input" id="message" name="message" rows="5" placeholder="Tell me about your project…" maxlength="2000" required></textarea>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <button type="submit" class="btn-primary-accent w-100" id="submitBtn">
+                      Send Message <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </button>
+                    <p id="formMsg" class="form-feedback mt-2" aria-live="polite"></p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- ========== FOOTER ========== -->
   <footer id="footer">
     <div class="container">
       <div class="footer-inner">
         <div class="footer-social">
-          <a href="https://github.com/matiasFarfan89" aria-label="GitHub"><i class="bi bi-github"></i></a>
-          <a href="https://www.linkedin.com/in/matias-farfan-262a31255/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://github.com/matiasFarfan89" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="bi bi-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/matias-farfan-262a31255/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
         </div>
         <p class="footer-copy">
           Designed &amp; built by <span class="accent">Matias Farfan</span> · 2026
@@ -349,10 +426,8 @@
   </footer>
 
   <!-- Back to top -->
-  <button id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>
+  <button id="backToTop" type="button" aria-label="Back to top"><i class="bi bi-chevron-up" aria-hidden="true"></i></button>
 
-  <!-- Bootstrap 5 JS (carousel + collapse depend on this) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="scripts.js"></script>
 </body>
 </html>
