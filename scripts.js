@@ -12,6 +12,37 @@
    All motion respects prefers-reduced-motion.
    ============================================= */
 
+/* ── Titan uptime counter ── */
+(function () {
+  const el = document.getElementById('titan-uptime');
+  if (!el) return;
+  // Epoch chosen so the counter reads "93 days, 3 hours" at midnight 2026-06-11 local time
+  const EPOCH = new Date('2026-03-09T21:00:00');
+  function tick() {
+    const diffMs = Date.now() - EPOCH.getTime();
+    const totalHours = Math.floor(diffMs / 36e5);
+    const days = Math.floor(totalHours / 24);
+    const hours = totalHours % 24;
+    el.textContent = `up ${days} day${days !== 1 ? 's' : ''}, ${hours} hour${hours !== 1 ? 's' : ''}`;
+  }
+  tick();
+  setInterval(tick, 60000);
+})();
+
+/* ── Hero datetime clock ── */
+(function () {
+  const el = document.getElementById('hero-datetime');
+  if (!el) return;
+  function tick() {
+    const now = new Date();
+    const date = now.toLocaleDateString('en-NZ', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+    const time = now.toLocaleTimeString('en-NZ', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    el.textContent = `${date} · ${time}`;
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
 (function () {
   'use strict';
 
