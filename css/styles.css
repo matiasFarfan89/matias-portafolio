@@ -744,15 +744,36 @@ img { max-width: 100%; display: block; }
   flex: 1;
 }
 
-.tech-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.2rem; }
-.tech-pills span {
+/* Tech stack — SVG technology icons + text chips for icon-less tools */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.tech-stack .tech-icon {
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  border-radius: 9px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  object-fit: contain;
+  transition: transform 0.18s var(--ease), border-color var(--transition);
+}
+.tech-stack .tech-icon:hover {
+  transform: translateY(-3px);
+  border-color: rgba(var(--accent-rgb), 0.45);
+}
+.tech-stack .tech-more {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--accent-bright);
   background: var(--accent-dim);
   border: 1px solid rgba(var(--accent-rgb), 0.22);
   border-radius: 20px;
-  padding: 0.3rem 0.7rem;
+  padding: 0.32rem 0.7rem;
 }
 
 .project-links { display: flex; gap: 1rem; }
@@ -796,6 +817,57 @@ img { max-width: 100%; display: block; }
   font-size: 0.85rem;
   color: var(--text-dim);
   letter-spacing: 0.02em;
+}
+
+/* Credentials / education */
+.credentials { margin-top: 2.5rem; }
+.credentials-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.8rem;
+}
+.credential {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition), transform 0.18s var(--ease);
+}
+.credential:hover {
+  border-color: rgba(var(--accent-rgb), 0.45);
+  transform: translateY(-2px);
+}
+.credential-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  color: var(--accent-bright);
+  background: var(--accent-dim);
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+}
+.credential-icon img { width: 30px; height: 30px; object-fit: contain; }
+.credential-body { display: flex; flex-direction: column; gap: 0.2rem; }
+.credential-title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+.credential-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
 }
 
 /* About image w/ offset border */
@@ -849,7 +921,6 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 22px 46px -22px rgba(0, 0, 0, 0.7);
 }
 .skill-card--accent {
-  border-color: rgba(var(--accent-rgb), 0.5);
   background: linear-gradient(155deg, rgba(var(--accent-rgb), 0.10), var(--surface) 55%);
 }
 
@@ -891,6 +962,12 @@ img { max-width: 100%; display: block; }
   content: "\25B8";
   color: var(--accent-bright);
   font-size: 0.7rem;
+  flex-shrink: 0;
+}
+.skill-card li .skill-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
